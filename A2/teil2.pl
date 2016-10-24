@@ -73,14 +73,18 @@ bindn([]).
 
 % Aufgabe 2.7 Wahrheitstafel fuer 2.1
 
-formelA :- tafel3(A,B,C, and(and(or(A,B),or(mnot(A),(mnot(B)))),and(or(mnot(C),B),or(mnot(B),or(A,mnot(C)))))).
+formelA :- tafel3(A,B,C, and(or(and(A, mnot(B)),and(mnot(A),B)), and(impl(C,B), impl(and(B,mnot(A)), mnot(C))))).
 
-%f1 and(or(A,B),or(mnot(A),(mnot(B))))
-%f2 or(mnot(C),B)
-%f3 or(mnot(B),or(A,mnot(C)))
+%formelA :- tafel3(A,B,C, and(and(or(A,B),or(mnot(A),(mnot(B)))),and(or(mnot(C),B),or(mnot(B),or(A,mnot(C)))))).
+
+%f1 and(or(A,B),or(mnot(A),(mnot(B)))) ----  or(and(A, mnot(B)),and(mnot(A),B))
+%f2 or(mnot(C),B)                      ----  impl(C,B)
+%f3 or(mnot(B),or(A,mnot(C)))          ----  impl(and(B,mnot(A)), mnot(C))
 
 
+%Aufgabe 2.8 testen auf aequivalenz zwischen (Negation von ((F1 und F2 und F3) impliziert F4)) und der KNF von 2.1
 
-%Aufgabe 2.8 testen von der KNF
+formelB :- tafel3(A,B,C, aequiv( mnot(impl(and(or(and(A, mnot(B)),and(mnot(A),B)), and(impl(C,B), impl(and(B,mnot(A)), mnot(C)))),mnot(C))),
+                                 and(or(A,B),and(or(mnot(A),mnot(B)),and(or(mnot(C),B),and(or(mnot(B),or(A,mnot(C))),C)))))).
 
-formelB :- tafel3(A,B,C, and(and(or(A,B),or(mnot(A),(mnot(B)))),and(or(mnot(C),B),or(mnot(B),or(A,mnot(C))))),   %WADDEFUCK GOES HERE
+
