@@ -12,7 +12,7 @@ my_unify(Term1, Term2) :- nonvar(Term1), var(Term2), !, occurs_check(Term2, Term
 % Keine Variable
 my_unify(Term1, Term2) :- nonvar(Term1), nonvar(Term2), !,
                           Term1 =.. [TName1|TListe1],
-                          Term2 =.. [TName2|Tliste2],
+                          Term2 =.. [TName2|TListe2],
                           TName1 == TName2, %Die Namen der Praedikate muessen gleich sein
                           %Im Algorithmus wird dies dargestellt als f=g
                           length(TListe1,Laenge1), length(TListe2,Laenge2),
