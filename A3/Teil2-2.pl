@@ -13,11 +13,11 @@ my_unify(Term1, Term2) :- nonvar(Term1), var(Term2), !, occur_check(Term2, Term1
 my_unify(Term1, Term2) :- nonvar(Term1), nonvar(Term2), !,
                           Term1 =.. [TName1|TListe1],
                           Term2 =.. [TName2|Tliste2],
-                          TName1 == TName2, %Die Namen der Praedikate muessen gleich sein,
-                          %Im Algorithmus wird dies dargestellt als f=g.
+                          TName1 == TName2, %Die Namen der Praedikate muessen gleich sein
+                          %Im Algorithmus wird dies dargestellt als f=g
                           length(TListe1,Laenge1), length(TListe2,Laenge2),
-                          Laenge1 == Laenge2, %Auch die Laenge der Praedikate muss gleich sein,
-                          %Im Algorithmus wird dies dargestellt als n=m.
+                          Laenge1 == Laenge2, %Auch die Laenge der Praedikate muss gleich sein
+                          %Im Algorithmus wird dies dargestellt als n=m
                           %Jetzt muessen wir die pruefen ob die Elemente der Listen unifizierbar
                           %sind, und rufen my_unify_list/2 auf.
                           my_unify_list(TListe1, TListe2).
