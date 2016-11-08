@@ -32,10 +32,10 @@ my_unify_list([Kopf1|Rest1], [Kopf2|Rest2]) :- my_unify(Kopf1, Kopf2), my_unify_
 
 % occurs_check
 
-% Falls X eine Variable, und t ungleich X
+% Falls t eine Variable, und t ungleich X
 occurs_check(X, Term) :- var(Term), !, Term \== X, !.
 
-% Falls X eine Variable, und t gleich X.
+% Falls t eine Variable, und t gleich X.
 occurs_check(X, Term) :- var(Term), !, Term == X, !, fail.
 
 % Falls Term keine Variable.
