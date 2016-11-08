@@ -4,10 +4,10 @@
 my_unify(Term1, Term2) :- var(Term1), var(Term2), !, Term1 = Term2.
 
 % Term1 ist eine Variable und Term2 nicht
-my_unify(Term1, Term2) :- var(Term1), nonvar(Term2), !, occur_check(Term1, Term2), Term1 = Term2.
+my_unify(Term1, Term2) :- var(Term1), nonvar(Term2), !, occurs_check(Term1, Term2), Term1 = Term2.
 
 % Term1 ist keine Variable aber Term1 ja
-my_unify(Term1, Term2) :- nonvar(Term1), var(Term2), !, occur_check(Term2, Term1), Term2 = Term1.
+my_unify(Term1, Term2) :- nonvar(Term1), var(Term2), !, occurs_check(Term2, Term1), Term2 = Term1.
 
 % Keine Variable
 my_unify(Term1, Term2) :- nonvar(Term1), nonvar(Term2), !,
